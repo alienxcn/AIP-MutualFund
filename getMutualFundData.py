@@ -43,13 +43,39 @@ def getWorth(fscode):
     netWorth_withTime = {}
     for dayWorth in netWorthTrend[::-1]:
         netWorth_withTime[time.strftime('%Y-%m-%d',time.localtime(int(dayWorth['x'])/1000))] = dayWorth['y']
+    
 
     print(fS_name,fS_code)
     return netWorth, ACWorth, netWorth_withTime
 
+def drawPlt(netWorth_withTime):
+    plt.figure(figsize=(20,5))
+    x = list(netWorth_withTime.keys())[:500][::-1]
+    y = list(netWorth_withTime.values())[:500][::-1]
+    plt.plot(y)
+    plt.show()
+
 netWorth, ACWorth, netWorth_withTime = getWorth('163407')
-plt.figure(figsize=(20,5))
-x = list(netWorth_withTime.keys())[:500][::-1]
-y = list(netWorth_withTime.values())[:500][::-1]
-plt.plot(y)
-plt.show()
+
+
+days = 300
+money_each_pay = 10
+money_totally = 0
+mutual_fund_value = 0
+mutual_fund_number = 0
+sorted(netWorth_withTime, reverse = True)
+for key, value in netWorth_withTime.items():
+    days = days - 1
+    money_totally = money_totally + money_each_pay
+    mutual_fund_number = mutual_fund_number + money_each_pay/value
+    if days == 0:
+        print('自%s开始定投\n' % key)
+        break
+    
+mutual_fund_value = mutual_fund_number * netWorth_withTime['2019-09-06']
+
+print('投入本金:%d' % money_totally)
+print('基金价值:%f' % mutual_fund_value)
+print('利润率:%f%%' % ((mutual_fund_value/money_totally - 1.0) * 100))
+
+    
