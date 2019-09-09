@@ -58,7 +58,7 @@ def drawPlt(netWorth_withTime):
 netWorth, ACWorth, netWorth_withTime = getWorth('163407')
 
 
-days = 300
+days = 131
 money_each_pay = 10
 money_totally = 0
 mutual_fund_value = 0
@@ -69,7 +69,7 @@ for key, value in netWorth_withTime.items():
     money_totally = money_totally + money_each_pay
     mutual_fund_number = mutual_fund_number + money_each_pay/value
     if days == 0:
-        print('自%s开始定投\n' % key)
+        print('自%s开始定投，每次定投金额%d元\n' % (key,money_each_pay))
         break
     
 mutual_fund_value = mutual_fund_number * netWorth_withTime['2019-09-06']
