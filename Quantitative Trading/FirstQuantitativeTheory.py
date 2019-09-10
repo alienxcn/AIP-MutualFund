@@ -1,5 +1,5 @@
 from jqdatasdk import *
-auth('15521390813', 'LMBmaobin456')
+auth('15521390813', '')
 
 def initialize(context):
     run_daily(period, time='every_bar')
