@@ -7,3 +7,10 @@
 3. 把策略转成程序。
 4. 检验策略效果。（回测和模拟交易）
 5. 进行实盘交易并不断维护修正。
+
+## 常用的下单函数
+
+1. order(security, amount)，购买一定数量的股票。
+2. order_target(security, amount), 通过买卖，将股票的仓位调整到一定数量。
+3. order_value(security, value)，买卖一定价值量的股票。
+4. order_target_value(security, value)，通过买卖，将股票仓位调整至一定价值量。
