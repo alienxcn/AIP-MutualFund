@@ -27,3 +27,9 @@ def period(context):
     position_per_stk = context.portfolio.cash / g.stocksnum
     for stock in buylist:
         order_value(stock, position_per_stk)
+
+
+import pandas as pd
+file = 'D:\example.xls'
+df = pd.DataFrame(pd.read_excel(file))
+print df
